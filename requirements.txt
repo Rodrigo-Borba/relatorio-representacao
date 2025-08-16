@@ -3,4 +3,6 @@ pandas
 geopandas
 plotly
 st-gsheets-connection
+numpy
+requests
 Authlib>=1.3.2
