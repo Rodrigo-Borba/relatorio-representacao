@@ -4,6 +4,7 @@ import streamlit as st
 import calendar
 from datetime import datetime
 import locale
+from planilha import Planilha
 
 locale.setlocale(locale.LC_ALL, 'pt_BR')
 
@@ -406,8 +407,10 @@ if st.session_state.valor == "valor":
 
         def atualizar_dados():
             recalcular_comissao()
-            st.session_state.planilha_obj.atualizar_aba_vendas(df=st.session_state.df_vendas)
+            planilha_vendas = Planilha()
+            planilha_vendas.atualizar_aba_vendas(df=st.session_state.df_vendas)
             st.session_state.df_vendas = df_vendas_editadas
+            st.cache_data.clear()
 
 
         st.button("Atualizar dados", on_click=atualizar_dados)

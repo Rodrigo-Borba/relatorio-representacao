@@ -7,6 +7,7 @@ from streamlit_gsheets import GSheetsConnection
 
 class Planilha:
     def __init__(self):
+        self.conexao = None
         self.conexao = st.connection("gsheets", type=GSheetsConnection)
 
     def buscar_vendas_df(self):

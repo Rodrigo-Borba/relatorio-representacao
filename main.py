@@ -49,8 +49,8 @@ elif st.user.email in USUARIOS_VALIDOS:
 
 
     def buscar_vendas():
-        planilha_obj = Planilha()
-        st.session_state.df_vendas = planilha_obj.buscar_vendas_df()
+        planilha_vendas = Planilha()
+        st.session_state.df_vendas = planilha_vendas.buscar_vendas_df()
         return st.session_state.df_vendas
 
 
@@ -58,8 +58,8 @@ elif st.user.email in USUARIOS_VALIDOS:
 
 
     def buscar_despesas():
-        planilha_obj = Planilha()
-        st.session_state.df_despesas = planilha_obj.buscar_despesas_df()
+        planilha_despesas = Planilha()
+        st.session_state.df_despesas = planilha_despesas.buscar_despesas_df()
         return st.session_state.df_despesas
 
 
@@ -169,8 +169,10 @@ elif st.user.email in USUARIOS_VALIDOS:
 
                 df_final = pd.concat([df_inicial, nova_linha.to_frame().T], ignore_index=True)
 
-                st.session_state.planilha_obj.atualizar_aba_vendas(df=df_final)
+                planilha_vendas = Planilha()
+                planilha_vendas.atualizar_aba_vendas(df=df_final)
                 st.session_state.df_vendas = df_final
+                st.cache_data.clear()
                 st.rerun()
 
 
@@ -213,8 +215,10 @@ elif st.user.email in USUARIOS_VALIDOS:
 
                 df_despesa_final = pd.concat([df_despesa_inicial, nova_linha.to_frame().T], ignore_index=True)
 
-                st.session_state.planilha_obj.atualizar_aba_despesas(df=df_despesa_final)
+                planilha_despesas = Planilha()
+                planilha_despesas.atualizar_aba_despesas(df=df_despesa_final)
                 st.session_state.df_despesas = df_despesa_final
+                st.cache_data.clear()
                 st.rerun()
 
 
