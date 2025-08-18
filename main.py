@@ -49,8 +49,8 @@ elif st.user.email in USUARIOS_VALIDOS:
 
 
     def buscar_vendas():
-        st.session_state.planilha_obj = Planilha()
-        st.session_state.df_vendas = st.session_state.planilha_obj.buscar_vendas_df()
+        planilha_obj = Planilha()
+        st.session_state.df_vendas = planilha_obj.buscar_vendas_df()
         return st.session_state.df_vendas
 
 
@@ -58,8 +58,8 @@ elif st.user.email in USUARIOS_VALIDOS:
 
 
     def buscar_despesas():
-        st.session_state.planilha_obj = Planilha()
-        st.session_state.df_despesas = st.session_state.planilha_obj.buscar_despesas_df()
+        planilha_obj = Planilha()
+        st.session_state.df_despesas = planilha_obj.buscar_despesas_df()
         return st.session_state.df_despesas
 
 
