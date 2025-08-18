@@ -49,35 +49,21 @@ elif st.user.email in USUARIOS_VALIDOS:
 
 
     def buscar_vendas():
-        if not "planilha_obj" in st.session_state or not st.session_state.planilha_obj:
-            st.session_state.planilha_obj = Planilha()
+        st.session_state.planilha_obj = Planilha()
         st.session_state.df_vendas = st.session_state.planilha_obj.buscar_vendas_df()
         return st.session_state.df_vendas
 
 
-    if not "planilha_obj" in st.session_state or not "df_vendas" in st.session_state:
-        df_vendas = buscar_vendas().copy()
-    else:
-        if st.session_state.df_vendas.empty:
-            df_vendas = buscar_vendas().copy()
-        else:
-            df_vendas = st.session_state.df_vendas.copy()
+    df_vendas = buscar_vendas().copy()
 
 
     def buscar_despesas():
-        if not "planilha_obj" in st.session_state or not st.session_state.planilha_obj:
-            st.session_state.planilha_obj = Planilha()
+        st.session_state.planilha_obj = Planilha()
         st.session_state.df_despesas = st.session_state.planilha_obj.buscar_despesas_df()
         return st.session_state.df_despesas
 
 
-    if not "planilha_obj" in st.session_state or not "df_despesas" in st.session_state:
-        df_despesas = buscar_despesas().copy()
-    else:
-        if st.session_state.df_despesas.empty:
-            df_despesas = buscar_despesas().copy()
-        else:
-            df_despesas = st.session_state.df_despesas.copy()
+    df_despesas = buscar_despesas().copy()
 
     df_vendas["data"] = pd.to_datetime(df_vendas["data"])
     df_vendas["mes"] = df_vendas["data"].dt.month
