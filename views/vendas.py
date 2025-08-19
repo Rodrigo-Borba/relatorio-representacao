@@ -339,7 +339,7 @@ st.markdown("---")
 # CIDADES
 mapa_ne = pd.concat(
     [st.session_state.mapa_pe, st.session_state.mapa_pb, st.session_state.mapa_al, st.session_state.mapa_se,
-     st.session_state.mapa_rn])
+     st.session_state.mapa_rn, st.session_state.mapa_ba, st.session_state.mapa_ce])
 
 df_soma_cidade = df_vendas_filtro[["cidade", st.session_state.valor]]
 df_soma_cidade = df_soma_cidade.groupby(["cidade"]).sum()

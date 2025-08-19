@@ -76,11 +76,15 @@ elif st.user.email in USUARIOS_VALIDOS:
     st.session_state.mapa_al = gpd.read_file('files/geojson_al.json')
     st.session_state.mapa_se = gpd.read_file('files/geojson_se.json')
     st.session_state.mapa_rn = gpd.read_file('files/geojson_rn.json')
+    st.session_state.mapa_ba = gpd.read_file('files/geojson_ba.json')
+    st.session_state.mapa_ce = gpd.read_file('files/geojson_ce.json')
     st.session_state.mapa_brasil = gpd.read_file('files/br_states.json')
 
     # Lista de estados
     ESTADOS_NORDESTE = [
         "AL",
+        "BA",
+        "CE",
         "PB",
         "PE",
         "RN",
@@ -116,6 +120,10 @@ elif st.user.email in USUARIOS_VALIDOS:
             cidade_opcoes = st.session_state.mapa_se["name"].unique()
         elif estado_form == "RN":
             cidade_opcoes = st.session_state.mapa_rn["name"].unique()
+        elif estado_form == "BA":
+            cidade_opcoes = st.session_state.mapa_ba["name"].unique()
+        elif estado_form == "CE":
+            cidade_opcoes = st.session_state.mapa_ce["name"].unique()
         else:
             cidade_opcoes = np.array([])
 
